@@ -1,0 +1,36 @@
+<div class="container card">
+  <div class="form container">
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit(clientForm)" novalidate>
+    <p>{{clientForm.value | json}}</p>
+    <p>{{clientForm.status | json}}</p>
+    <div class="form-group">
+      <label for="" class="col-2 col-fomr-label">Name</label>
+      <input type="text" class="form-control" formControlName="name" placeholder="Your full name">
+      <small class="ion-close text text-danger" *ngIf="clientForm.get('name').hasError('required') && clientForm.get('name').touched"> Name is required</small>     
+      <small class="ion-checkmark text text-success" *ngIf="clientForm.get('name').valid"> Ok</small>     
+    </div>   
+    <div class="form-group">
+      <label for="" class="col-2 col-fomr-label">Phone</label>
+      <input type="text" class="form-control" formControlName="phone" placeholder="Your full phone" [textMask]="{mask: mask}" >
+      <small class="ion-close text text-danger" *ngIf="clientForm.get('phone').hasError('required') && clientForm.get('phone').touched"> Phone is required</small>     
+      <small class="ion-checkmark text text-success" *ngIf="clientForm.get('phone').valid"> Ok</small>   
+    </div>
+    <div class="form-group">
+      <label for="" class="col-2 col-fomr-label">Email</label>
+      <input type="text" class="form-control" formControlName="email" placeholder="Your email address">
+      <small class="ion-close text text-danger" *ngIf="clientForm.get('email').hasError('required') && clientForm.get('email').touched"> Email is required</small>     
+      <small class="ion-checkmark text text-success" *ngIf="clientForm.get('email').valid"> Ok</small>     
+    </div>
+    <div class="form-group">
+      <label for="" class="col-2 col-fomr-label">Confirm</label>
+      <input type="text" class="form-control" formControlName="confirm" placeholder="Confirming your email address">
+      <small class="ion-close text text-danger" *ngIf="clientForm.get('confirm').hasError('required') && clientForm.get('confirm').touched"> Confirming email is required</small>     
+      <small class="ion-close text text-danger" *ngIf="clientForm.hasError('emailsNotMatch')"> Email not match</small>     
+      <small class="ion-checkmark text text-success" *ngIf="!clientForm.get('confirm').invalid && !clientForm.hasError('emailsNotMatch')"> Ok</small>          
+    </div> 
+    <button type="submit" class="ion-paper-airplane btn btn-primary btn-block" [disabled]="!clientForm.valid"> Send</button>
+    <button type="reset" class="ion-ios-refresh-outline btn btn-danger btn-block" [disabled]="clientForm.pristine"> Reset</button>
+ 
+  </form>
+</div>
+</div>
