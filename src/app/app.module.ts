@@ -5,16 +5,14 @@ import { HttpModule } from '@angular/http';
 import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppComponent } from './app.component';
-import { ClientsComponent } from './clients/clients.component';
-import { TesteComponent } from './teste/teste.component';
+import { ClientsComponent } from './clients/clients.component'
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientsComponent,
-    TesteComponent
+    ClientsComponent
   ],
   imports: [
     BrowserModule,
